@@ -6,7 +6,7 @@ from aiohttp import ClientSession
 from pydantic import BaseModel
 from src.services.cdek.common import APIClient
 from src.services.cdek.enums import CountryCode
-from src.services.cdek.models import CitySearchParams, Region, RegionSearchParams
+from src.services.cdek.models import RegionSearchParams
 from src.utils.config import get_cached_settings
 
 from src.services.cdek.api import (
@@ -83,9 +83,16 @@ class CDEKAPIClient(
 
 
 async def test():
-	CDEKAPIClient(client_id=get_cached_settings().CDEK_CLIENT_ID, client_secret=get_cached_settings().CDEK_CLIENT_SECRET)
+	CDEKAPIClient(
+		client_id=get_cached_settings().CDEK_CLIENT_ID,
+		client_secret=get_cached_settings().CDEK_CLIENT_SECRET,
+	)
 
-	print(await CDEKAPIClient.get_regions(RegionSearchParams(country_codes=[CountryCode.RUSSIA])))
+	print(
+		await CDEKAPIClient.get_regions(
+			RegionSearchParams(country_codes=[CountryCode.RUSSIA])
+		)
+	)
 
 
 if __name__ == "__main__":
