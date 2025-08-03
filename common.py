@@ -3,9 +3,8 @@ import sys
 from contextlib import asynccontextmanager
 from typing import Literal
 
+import aiohttp.client_exceptions
 from aiohttp import ClientSession
-
-from src.services.exceptions import InternalServerError
 
 
 class APIClient:
@@ -50,7 +49,7 @@ class APIClient:
 			)
 
 			if not request.ok:
-				raise InternalServerError(
+				raise aiohttp.client_exceptions.ClientError(
 					detail=f"Failed to perform {cls._base_url + path} {method} request, {params=}, {json=}; {await request.text()}"
 				)
 

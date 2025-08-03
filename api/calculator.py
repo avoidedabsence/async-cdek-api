@@ -1,14 +1,12 @@
 from pydantic import ValidationError
-import loguru
-from src.services.cdek.models import (
+from loguru import logger
+from ..models import (
 	TariffRequest,
 	TariffResponse,
 	TariffListRequest,
 	CustomsDutyRequest,
 	CustomsDutyResponse,
 )
-
-logger = loguru.logger.bind(name="srv.cdek.calculator")
 
 
 class CalculatorMixin:

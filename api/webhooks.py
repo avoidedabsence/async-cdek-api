@@ -1,16 +1,14 @@
 from typing import Any
 from pydantic import ValidationError
-import loguru
+from loguru import logger
 
-from src.services.cdek.models import (
+from ..models import (
 	WebhookRequest,
 	WebhookResponse,
 	WebhookInfo,
 )
 
-from src.services.cdek.enums import WebhookType
-
-logger = loguru.logger.bind(name="srv.cdek.webhooks")
+from ..enums import WebhookType
 
 
 class WebhooksMixin:

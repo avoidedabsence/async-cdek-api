@@ -1,12 +1,11 @@
 from pydantic import ValidationError
-import loguru
-
-from src.services.cdek.models import (
+from ..models import (
 	RegionSearchParams,
 	CitySearchParams,
 	Region,
 	City,
 )
+from loguru import logger
 
 logger = loguru.logger.bind(name="srv.cdek.locations")
 

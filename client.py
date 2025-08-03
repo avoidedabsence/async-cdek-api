@@ -1,15 +1,11 @@
-import asyncio
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta
-import loguru
+from loguru import logger
 from aiohttp import ClientSession
 from pydantic import BaseModel
-from src.services.cdek.common import APIClient
-from src.services.cdek.enums import CountryCode
-from src.services.cdek.models import RegionSearchParams
-from src.utils.config import get_cached_settings
+from .common import APIClient
 
-from src.services.cdek.api import (
+from .api import (
 	CalculatorMixin,
 	OrdersMixin,
 	LocationsMixin,
@@ -18,9 +14,6 @@ from src.services.cdek.api import (
 	PrintingMixin,
 	WebhooksMixin,
 )
-
-logger = loguru.logger.bind(name="srv.cdek")
-
 
 class CDEKAuthData(BaseModel):
 	access_token: str
@@ -80,20 +73,3 @@ class CDEKAPIClient(
 			else:
 				logger.error(await auth_request.text())
 				yield None
-
-
-async def test():
-	CDEKAPIClient(
-		client_id=get_cached_settings().CDEK_CLIENT_ID,
-		client_secret=get_cached_settings().CDEK_CLIENT_SECRET,
-	)
-
-	print(
-		await CDEKAPIClient.get_regions(
-			RegionSearchParams(country_codes=[CountryCode.RUSSIA])
-		)
-	)
-
-
-if __name__ == "__main__":
-	asyncio.run(test())
