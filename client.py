@@ -15,6 +15,7 @@ from .api import (
 	WebhooksMixin,
 )
 
+
 class CDEKAuthData(BaseModel):
 	access_token: str
 	expires_at: datetime
