@@ -1,0 +1,50 @@
+
+from pydantic import ValidationError
+import loguru
+
+from src.services.cdek.models import (
+	RegionSearchParams,
+	CitySearchParams,
+	Region,
+	City,
+)
+
+logger = loguru.logger.bind(name="srv.cdek.locations")
+
+
+class LocationsMixin:
+	@classmethod
+	async def get_regions(
+		cls, params: RegionSearchParams | None = None
+	) -> list[Region]:
+		try:
+			search_params = (
+				params.model_dump(exclude_none=True)
+				if params
+				else {"size": 1000, "page": 0}
+			)
+			response = await cls.get("/v2/location/regions", params=search_params)
+			if isinstance(response, list):
+				for region in response:
+					print(region)
+				return [Region(**region) for region in response]
+			return [Region(**response)]
+		except ValidationError as e:
+			logger.error(f"Validation error in get_regions: {e}")
+			raise
+
+	@classmethod
+	async def get_cities(cls, params: CitySearchParams | None = None) -> list[City]:
+		try:
+			search_params = (
+				params.model_dump(exclude_none=True)
+				if params
+				else {"size": 1000, "page": 0}
+			)
+			response = await cls.get("/v2/location/cities", params=search_params)
+			if isinstance(response, list):
+				return [City(**city) for city in response]
+			return [City(**response)]
+		except ValidationError as e:
+			logger.error(f"Validation error in get_cities: {e}")
+			raise

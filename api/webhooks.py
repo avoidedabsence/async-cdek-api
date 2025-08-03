@@ -1,0 +1,49 @@
+from typing import Any
+from pydantic import ValidationError
+import loguru
+
+from src.services.cdek.models import (
+	WebhookRequest,
+	WebhookResponse,
+	WebhookInfo,
+)
+
+from src.services.cdek.enums import WebhookType
+
+logger = loguru.logger.bind(name="srv.cdek.webhooks")
+
+
+class WebhooksMixin:
+	@classmethod
+	async def subscribe_webhook(
+		cls, url: str, webhook_type: str = WebhookType.ORDER_STATUS
+	) -> WebhookResponse:
+		try:
+			webhook_request = WebhookRequest(url=url, type=webhook_type)
+			response = await cls.post(
+				"/v2/webhooks", json=webhook_request.model_dump(exclude_none=True)
+			)
+			return WebhookResponse(**response)
+		except ValidationError as e:
+			logger.error(f"Validation error in subscribe_webhook: {e}")
+			raise
+
+	@classmethod
+	async def get_webhooks(cls) -> list[WebhookInfo]:
+		try:
+			response = await cls.get("/v2/webhooks")
+			if isinstance(response, list):
+				return [WebhookInfo(**webhook) for webhook in response]
+			return [WebhookInfo(**response)]
+		except ValidationError as e:
+			logger.error(f"Validation error in get_webhooks: {e}")
+			raise
+
+	@classmethod
+	async def delete_webhook(cls, uuid: str) -> dict[str, Any]:
+		try:
+			response = await cls.delete(f"/v2/webhooks/{uuid}")
+			return response
+		except ValidationError as e:
+			logger.error(f"Validation error in delete_webhook: {e}")
+			raise
