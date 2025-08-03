@@ -1,0 +1,104 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pycdek"
+dynamic = ["version"]
+description = "An asynchronous Python client library for the CDEK API"
+readme = "README.md"
+license = "GPL-3.0"
+requires-python = ">=3.9"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+keywords = [
+    "cdek",
+    "delivery",
+    "shipping",
+    "logistics",
+    "api",
+    "async",
+    "russia",
+    "courier",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Office/Business",
+    "Typing :: Typed",
+]
+dependencies = [
+    "aiohttp>=3.8.0",
+    "pydantic>=2.0.0",
+    "loguru>=0.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "build>=0.10.0",
+    "twine>=4.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/avoidedabsence/pycdek"
+Repository = "https://github.com/avoidedabsence/pycdek.git"
+Documentation = "https://github.com/avoidedabsence/pycdek/blob/main/docs/API_REFERENCE.md"
+"Bug Tracker" = "https://github.com/avoidedabsence/pycdek/issues"
+
+[tool.hatch.version]
+path = "__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/api",
+    "/enums",
+    "/models",
+    "/docs",
+    "/__init__.py",
+    "/client.py",
+    "/common.py",
+    "/README.md",
+    "/LICENSE",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
