@@ -1,4 +1,4 @@
-# CDEK Python SDK
+# async-cdek-api Library
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-GNU-green.svg)
@@ -30,13 +30,13 @@ An asynchronous Python client library for the CDEK API. This SDK provides easy i
 ## Installation
 
 ```bash
-pip install pycdek
+pip install async-cdek-api
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/avoidedabsence/pycdek.git
+git clone https://github.com/avoidedabsence/async-cdek-api.git
 cd pycdek
 pip install -e .
 ```
@@ -108,12 +108,12 @@ This project is licensed under the GNU v3.0 License - see the [LICENSE](LICENSE)
 ## Links
 
 - [CDEK API Documentation](https://api.cdek.ru/)
-- [PyPI Package](https://pypi.org/project/pycdek/)
+- [PyPI Package](https://pypi.org/project/async-cdek-api/)
 
 ## Support
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/avoidedabsence/pycdek/issues) page
+1. Check the [Issues](https://github.com/avoidedabsence/async-cdek-api/issues) page
 2. Create a new issue with detailed description
 3. Include code examples and error messages
