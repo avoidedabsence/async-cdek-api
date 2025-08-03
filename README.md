@@ -37,7 +37,7 @@ Or install from source:
 
 ```bash
 git clone https://github.com/avoidedabsence/async-cdek-api.git
-cd pycdek
+cd async-cdek-api
 pip install -e .
 ```
 
