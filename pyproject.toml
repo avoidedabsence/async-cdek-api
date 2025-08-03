@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pycdek"
+name = "async-cdek-api"
 dynamic = ["version"]
 description = "An asynchronous Python client library for the CDEK API"
 readme = "README.md"
 license = "GPL-3.0"
 requires-python = ">=3.9"
 authors = [
-    {name = "Your Name", email = "your.email@example.com"},
+    {name = "Alexey P.", email = "i@apechenin.ru"},
 ]
 keywords = [
     "cdek",
@@ -57,10 +57,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/avoidedabsence/pycdek"
-Repository = "https://github.com/avoidedabsence/pycdek.git"
-Documentation = "https://github.com/avoidedabsence/pycdek/blob/main/docs/API_REFERENCE.md"
-"Bug Tracker" = "https://github.com/avoidedabsence/pycdek/issues"
+Homepage = "https://github.com/avoidedabsence/async-cdek-api"
+Repository = "https://github.com/avoidedabsence/async-cdek-api.git"
+Documentation = "https://github.com/avoidedabsence/async-cdek-api/blob/main/docs/API_REFERENCE.md"
+"Bug Tracker" = "https://github.com/avoidedabsence/async-cdek-api/issues"
 
 [tool.hatch.version]
 path = "__init__.py"
