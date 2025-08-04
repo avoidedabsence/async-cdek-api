@@ -16,7 +16,7 @@ This document provides practical examples for common use cases with the CDEK Pyt
 
 ```python
 import asyncio
-from cdek import CDEKAPIClient
+from aiocdek import CDEKAPIClient
 
 # Initialize client
 client = CDEKAPIClient(
@@ -31,8 +31,8 @@ client = CDEKAPIClient(
 ### Creating a Simple Order
 
 ```python
-from cdek.models import OrderRequest, OrderPackage, OrderSender, OrderRecipient, Location
-from cdek.enums import TariffCode
+from aiocdek.models import OrderRequest, OrderPackage, OrderSender, OrderRecipient, Location
+from aiocdek.enums import TariffCode
 
 async def create_simple_order():
     order = OrderRequest(
@@ -74,8 +74,8 @@ async def create_simple_order():
 ### Creating an Order with Items
 
 ```python
-from cdek.models import OrderItem, Money
-from cdek.enums import CountryCode
+from aiocdek.models import OrderItem, Money
+from aiocdek.enums import CountryCode
 
 async def create_order_with_items():
     items = [
@@ -152,7 +152,7 @@ async def track_order(order_uuid: str):
 ### Compare Multiple Tariffs
 
 ```python
-from cdek.models import TariffListRequest
+from aiocdek.models import TariffListRequest
 
 async def compare_tariffs():
     request = TariffListRequest(
@@ -180,7 +180,7 @@ async def compare_tariffs():
 ### Calculate with Additional Services
 
 ```python
-from cdek.models import Service
+from aiocdek.models import Service
 
 async def calculate_with_services():
     services = [
@@ -210,7 +210,7 @@ async def calculate_with_services():
 ### Find Cities by Name
 
 ```python
-from cdek.models import CitySearchParams
+from aiocdek.models import CitySearchParams
 
 async def find_cities(city_name: str):
     params = CitySearchParams(
@@ -259,7 +259,7 @@ async def find_pickup_points(city_code: int):
 ### Request Courier Pickup
 
 ```python
-from cdek.models import CourierRequest
+from aiocdek.models import CourierRequest
 from datetime import datetime, timedelta
 
 async def request_courier():
@@ -325,7 +325,7 @@ async def print_barcode(order_uuid: str):
 ### Setup Order Status Webhooks
 
 ```python
-from cdek.models import WebhookRequest
+from aiocdek.models import WebhookRequest
 
 async def setup_webhooks():
     # Create webhook for order status updates
