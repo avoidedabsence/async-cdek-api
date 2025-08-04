@@ -41,6 +41,7 @@ dependencies = [
     "aiohttp>=3.8.0",
     "pydantic>=2.0.0",
     "loguru>=0.6.0",
+    "build>=1.3.0",
 ]
 
 [project.optional-dependencies]
@@ -66,18 +67,6 @@ Documentation = "https://github.com/avoidedabsence/aiocdek/blob/main/docs/API_RE
 path = "aiocdek/__init__.py"
 
 [tool.hatch.build.targets.sdist]
-# Let hatch discover files automatically
-# include = [
-#     "/__init__.py",
-#     "/client.py",
-#     "/common.py",
-#     "/api",
-#     "/enums",
-#     "/models",
-#     "/README.md",
-#     "/LICENSE",
-#     "/CHANGELOG.md",
-# ]
 
 [tool.black]
 line-length = 88
