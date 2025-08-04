@@ -35,15 +35,15 @@ class CDEKAPIClient(
 	WebhooksMixin,
 ):
 	_cached_auth_data: CDEKAuthData = None
-	_base_url: str = get_cached_settings().CDEK_API_HOST
 	_client_name = __qualname__
 	_client_id: str = None
 	_client_secret: str = None
 
 	@classmethod
-	def __init__(cls, client_id: str, client_secret: str):
+	def __init__(cls, client_id: str, client_secret: str, test_environment: bool = False):
 		cls._client_id = client_id
 		cls._client_secret = client_secret
+		cls._base_url = "https://api.cdek.ru/" if not test_environment else "https://api.edu.cdek.ru/"
 
 	@classmethod
 	@asynccontextmanager

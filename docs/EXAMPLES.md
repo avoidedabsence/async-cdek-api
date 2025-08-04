@@ -1,4 +1,4 @@
-# CDEK SDK Examples
+# Examples
 
 This document provides practical examples for common use cases with the CDEK Python SDK.
 
@@ -11,7 +11,6 @@ This document provides practical examples for common use cases with the CDEK Pyt
 - [Courier Services](#courier-services)
 - [Printing Services](#printing-services)
 - [Webhook Management](#webhook-management)
-- [Error Handling](#error-handling)
 
 ## Basic Setup
 
@@ -22,7 +21,8 @@ from cdek import CDEKAPIClient
 # Initialize client
 client = CDEKAPIClient(
     client_id="your_client_id",
-    client_secret="your_client_secret"
+    client_secret="your_client_secret",
+    test_environment=False
 )
 ```
 
@@ -370,63 +370,6 @@ def handle_cdek_webhook():
         # update_order_status(order_uuid, status)
     
     return "OK", 200
-```
-
-## Error Handling
-
-### Comprehensive Error Handling
-
-```python
-from pydantic import ValidationError
-from aiohttp import ClientError
-
-async def robust_order_creation(order_data):
-    try:
-        order = OrderRequest(**order_data)
-        result = await client.create_order(order)
-        return result
-        
-    except ValidationError as e:
-        print(f"Invalid order data: {e}")
-        # Log validation errors
-        for error in e.errors():
-            print(f"Field: {error['loc']}, Error: {error['msg']}")
-        return None
-        
-    except ClientError as e:
-        print(f"Network error: {e}")
-        return None
-        
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-        return None
-```
-
-### Retry Logic
-
-```python
-import asyncio
-from functools import wraps
-
-def retry(max_attempts=3, delay=1):
-    def decorator(func):
-        @wraps(func)
-        async def wrapper(*args, **kwargs):
-            for attempt in range(max_attempts):
-                try:
-                    return await func(*args, **kwargs)
-                except Exception as e:
-                    if attempt == max_attempts - 1:
-                        raise e
-                    print(f"Attempt {attempt + 1} failed: {e}")
-                    await asyncio.sleep(delay * (attempt + 1))
-            return None
-        return wrapper
-    return decorator
-
-@retry(max_attempts=3, delay=2)
-async def create_order_with_retry(order):
-    return await client.create_order(order)
 ```
 
 ## Complete Workflow Example

@@ -1,7 +1,7 @@
-# async-cdek-api Library
+# async-cdek-api - comprehensive asynchronous library for interaction with CDEK API
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
-![License](https://img.shields.io/badge/license-GNU-green.svg)
+![License](https://img.shields.io/badge/license-GNUv3.0-green.svg)
 
 An asynchronous Python client library for the CDEK API. This SDK provides easy integration with CDEK delivery services, supporting all major API endpoints with type-safe models and comprehensive error handling.
 
@@ -53,7 +53,8 @@ async def main():
     # Initialize the client with your credentials
     client = CDEKAPIClient(
         client_id="your_client_id",
-        client_secret="your_client_secret"
+        client_secret="your_client_secret",
+        test_environment=False # If True, API URI = https://api.edu.cdek.ru/
     )
     
     # Calculate delivery cost

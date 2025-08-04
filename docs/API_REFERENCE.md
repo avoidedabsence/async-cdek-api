@@ -31,12 +31,13 @@ class CDEKAPIClient(
 #### Initialization
 
 ```python
-CDEKAPIClient(client_id: str, client_secret: str)
+CDEKAPIClient(client_id: str, client_secret: str, test_environment: bool = False)
 ```
 
 **Parameters:**
 - `client_id` (str): Your CDEK API client ID
 - `client_secret` (str): Your CDEK API client secret
+- `test_environment` (bool): Default: False; If to use api.edu.cdek.ru as base_url for API
 
 #### Authentication
 
