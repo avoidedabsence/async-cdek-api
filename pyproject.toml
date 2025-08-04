@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "async-cdek-api"
+name = "aiocdek"
 dynamic = ["version"]
 description = "An asynchronous Python client library for the CDEK API"
 readme = "README.md"
@@ -57,29 +57,27 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/avoidedabsence/async-cdek-api"
-Repository = "https://github.com/avoidedabsence/async-cdek-api.git"
-Documentation = "https://github.com/avoidedabsence/async-cdek-api/blob/main/docs/API_REFERENCE.md"
-"Bug Tracker" = "https://github.com/avoidedabsence/async-cdek-api/issues"
+Homepage = "https://github.com/avoidedabsence/aiocdek"
+Repository = "https://github.com/avoidedabsence/aiocdek.git"
+Documentation = "https://github.com/avoidedabsence/aiocdek/blob/main/docs/API_REFERENCE.md"
+"Bug Tracker" = "https://github.com/avoidedabsence/aiocdek/issues"
 
 [tool.hatch.version]
-path = "__init__.py"
-
-[tool.hatch.build.targets.wheel]
-packages = ["."]
+path = "aiocdek/__init__.py"
 
 [tool.hatch.build.targets.sdist]
-include = [
-    "/__init__.py",
-    "/client.py",
-    "/common.py",
-    "/api",
-    "/enums",
-    "/models",
-    "/README.md",
-    "/LICENSE",
-    "/CHANGELOG.md",
-]
+# Let hatch discover files automatically
+# include = [
+#     "/__init__.py",
+#     "/client.py",
+#     "/common.py",
+#     "/api",
+#     "/enums",
+#     "/models",
+#     "/README.md",
+#     "/LICENSE",
+#     "/CHANGELOG.md",
+# ]
 
 [tool.black]
 line-length = 88

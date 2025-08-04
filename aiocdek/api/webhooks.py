@@ -2,13 +2,13 @@ from typing import Any
 from pydantic import ValidationError
 from loguru import logger
 
-from models import (
+from ..models import (
 	WebhookRequest,
 	WebhookResponse,
 	WebhookInfo,
 )
 
-from enums import WebhookType
+from ..enums import WebhookType
 
 
 class WebhooksMixin:

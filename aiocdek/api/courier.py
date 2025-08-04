@@ -1,6 +1,6 @@
 from pydantic import ValidationError
 from loguru import logger
-from models import (
+from ..models import (
 	CourierRequest,
 	CourierResponse,
 	CourierInfo,

@@ -2,8 +2,7 @@ include README.md
 include LICENSE
 include CHANGELOG.md
 include pyproject.toml
-include setup.py
-recursive-include async_cdek_api *.py
+recursive-include aiocdek *.py
 recursive-include docs *.md
 exclude .DS_Store
 exclude .gitignore
@@ -13,4 +12,3 @@ exclude *.pyc
 exclude __pycache__/*
 global-exclude *.pyc
 global-exclude __pycache__
-

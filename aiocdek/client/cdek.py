@@ -4,8 +4,8 @@ from loguru import logger
 from aiohttp import ClientSession
 from pydantic import BaseModel
 
-from common import APIClient
-from api import (
+from .common import APIClient
+from ..api import (
 	CalculatorMixin,
 	OrdersMixin,
 	LocationsMixin,

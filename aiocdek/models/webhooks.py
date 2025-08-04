@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from enums import WebhookType
+from ..enums import WebhookType
 
 
 class WebhookRequest(BaseModel):

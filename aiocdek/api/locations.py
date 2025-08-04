@@ -1,7 +1,7 @@
 from pydantic import ValidationError
 from loguru import logger
 
-from models import (
+from ..models import (
 	RegionSearchParams,
 	CitySearchParams,
 	Region,
@@ -22,8 +22,6 @@ class LocationsMixin:
 			)
 			response = await cls.get("/v2/location/regions", params=search_params)
 			if isinstance(response, list):
-				for region in response:
-					print(region)
 				return [Region(**region) for region in response]
 			return [Region(**response)]
 		except ValidationError as e:

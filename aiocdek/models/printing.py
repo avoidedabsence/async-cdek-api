@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from enums import PrintFormat
+from ..enums import PrintFormat
 
 
 class PrintRequest(BaseModel):

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from enums import DeliveryPointType, CountryCode, Language
+from ..enums import DeliveryPointType, CountryCode, Language
 
 
 class DeliveryPointFilter(BaseModel):
