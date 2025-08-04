@@ -1,4 +1,10 @@
-from .client import CDEKAPIClient
+__version__ = "0.1.0"
+__author__ = "Alexey P."
+__email__ = "i@apechenin.ru"
 
-__version__ = "0.1.1"
-__all__ = ["CDEKAPIClient"]
+from client import CDEKAPIClient, APIClient
+
+__all__ = [
+    "CDEKAPIClient",
+    "APIClient",
+]

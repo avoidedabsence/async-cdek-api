@@ -1,11 +1,16 @@
 include README.md
 include LICENSE
+include CHANGELOG.md
 include pyproject.toml
+include setup.py
+recursive-include async_cdek_api *.py
 recursive-include docs *.md
-recursive-include api *.py
-recursive-include enums *.py
-recursive-include models *.py
+exclude .DS_Store
+exclude .gitignore
+exclude .github/*
+exclude tests/*
+exclude *.pyc
+exclude __pycache__/*
+global-exclude *.pyc
 global-exclude __pycache__
-global-exclude *.py[co]
-global-exclude .DS_Store
 

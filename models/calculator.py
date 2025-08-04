@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
-from .base import Location, Service, CDEKError
-from ..enums import TariffCode, Currency, Language, DeliveryMode
+from . import Location, Service, CDEKError
+from enums import TariffCode, Currency, Language, DeliveryMode
 
 
 class CalculatorPackage(BaseModel):

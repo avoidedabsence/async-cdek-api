@@ -65,21 +65,21 @@ Documentation = "https://github.com/avoidedabsence/async-cdek-api/blob/main/docs
 [tool.hatch.version]
 path = "__init__.py"
 
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
 [tool.hatch.build.targets.sdist]
 include = [
-    "/api",
-    "/enums",
-    "/models",
-    "/docs",
     "/__init__.py",
     "/client.py",
     "/common.py",
+    "/api",
+    "/enums",
+    "/models",
     "/README.md",
     "/LICENSE",
+    "/CHANGELOG.md",
 ]
-
-[tool.hatch.build.targets.wheel]
-packages = ["."]
 
 [tool.black]
 line-length = 88
@@ -99,6 +99,3 @@ disallow_untyped_defs = true
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]

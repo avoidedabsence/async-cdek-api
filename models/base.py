@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from ..enums import CountryCode, ServiceCode, Currency, VATRate
+from enums import CountryCode, ServiceCode, Currency, VATRate
 
 
 class Coordinates(BaseModel):

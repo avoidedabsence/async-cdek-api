@@ -1,7 +1,7 @@
 from pydantic import ValidationError
 from loguru import logger
 
-from ..models import (
+from models import (
 	RegionSearchParams,
 	CitySearchParams,
 	Region,

@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
-from .base import Location, Contact
-from ..enums import WeightLimit, DimensionLimit
+from . import Location, Contact
+from enums import WeightLimit, DimensionLimit
 
 
 class CourierRequest(BaseModel):

@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from ..enums import CountryCode, Language
+from enums import CountryCode, Language
 
 
 class RegionSearchParams(BaseModel):

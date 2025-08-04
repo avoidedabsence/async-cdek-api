@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
-from .base import Location, Service, CDEKError, Money
-from ..enums import OrderType, TariffCode, DeliveryMode, CountryCode
+from . import Location, Service, CDEKError, Money
+from enums import OrderType, TariffCode, DeliveryMode, CountryCode
 
 
 class OrderPackage(BaseModel):
