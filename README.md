@@ -1,4 +1,4 @@
-# async-cdek-api - comprehensive asynchronous library for interaction with CDEK API
+# aiocdek - comprehensive asynchronous library for interaction with CDEK API
 
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-GNUv3.0-green.svg)
@@ -30,14 +30,14 @@ An asynchronous Python client library for the CDEK API. This SDK provides easy i
 ## Installation
 
 ```bash
-pip install async-cdek-api
+pip install aiocdek
 ```
 
 Or install from source:
 
 ```bash
-git clone https://github.com/avoidedabsence/async-cdek-api.git
-cd async-cdek-api
+git clone https://github.com/avoidedabsence/aiocdek.git
+cd aiocdek
 pip install -e .
 ```
 
@@ -45,9 +45,9 @@ pip install -e .
 
 ```python
 import asyncio
-from cdek import CDEKAPIClient
-from cdek.models import OrderRequest, OrderPackage, OrderSender, OrderRecipient, Location, Money
-from cdek.enums import TariffCode
+from aiocdek import CDEKAPIClient
+from aiocdek.models import OrderRequest, OrderPackage, OrderSender, OrderRecipient, Location, Money
+from aiocdek.enums import TariffCode
 
 async def main():
     # Initialize the client with your credentials
@@ -109,12 +109,12 @@ This project is licensed under the GNU v3.0 License - see the [LICENSE](LICENSE)
 ## Links
 
 - [CDEK API Documentation](https://api.cdek.ru/)
-- [PyPI Package](https://pypi.org/project/async-cdek-api/)
+- [PyPI Package](https://pypi.org/project/aiocdek/)
 
 ## Support
 
 If you encounter any issues or have questions:
 
-1. Check the [Issues](https://github.com/avoidedabsence/async-cdek-api/issues) page
+1. Check the [Issues](https://github.com/avoidedabsence/aiocdek/issues) page
 2. Create a new issue with detailed description
 3. Include code examples and error messages
