@@ -1,5 +1,7 @@
 from contextlib import asynccontextmanager
 from datetime import datetime, timedelta
+from typing import AsyncGenerator
+
 from loguru import logger
 from aiohttp import ClientSession
 from pydantic import BaseModel
@@ -40,14 +42,15 @@ class CDEKAPIClient(
 	_client_secret: str = None
 
 	@classmethod
-	def __init__(cls, client_id: str, client_secret: str, test_environment: bool = False):
+	def __init__(cls, client_id: str, client_secret: str, test_environment: bool = False, debug: bool = False):
 		cls._client_id = client_id
 		cls._client_secret = client_secret
 		cls._base_url = "https://api.cdek.ru/" if not test_environment else "https://api.edu.cdek.ru/"
+		cls._debug_mode = debug
 
 	@classmethod
 	@asynccontextmanager
-	async def _get_cached_auth_data(cls):
+	async def _get_cached_auth_data(cls) -> AsyncGenerator[CDEKAuthData | None]:
 		if cls._cached_auth_data and not cls._cached_auth_data.is_expired():
 			logger.debug("Retrieved cached AuthData")
 			yield cls._cached_auth_data

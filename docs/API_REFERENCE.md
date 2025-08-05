@@ -1,3 +1,5 @@
+from aiocdek.models.locations import CityFromSearchfrom aiocdek.enums import CountryCode
+
 # API Reference
 
 This document provides detailed information about all classes, methods, and models in the CDEK Python SDK.
@@ -31,13 +33,14 @@ class CDEKAPIClient(
 #### Initialization
 
 ```python
-CDEKAPIClient(client_id: str, client_secret: str, test_environment: bool = False)
+CDEKAPIClient(client_id: str, client_secret: str, test_environment: bool = False, debug: bool = False)
 ```
 
 **Parameters:**
 - `client_id` (str): Your CDEK API client ID
 - `client_secret` (str): Your CDEK API client secret
 - `test_environment` (bool): Default: False; If to use api.edu.cdek.ru as base_url for API
+- `debug` (bool): Default: False; If to log every API request
 
 #### Authentication
 
@@ -153,6 +156,21 @@ async def get_cities(params: CitySearchParams | None = None) -> list[City]
 
 **Parameters:**
 - `params` (CitySearchParams, optional): Search parameters
+
+**Returns:**
+- `list[City]`: List of cities
+
+### get_approximate_city
+
+Get a list of cities approximate to query
+
+```python
+async def get_cities(query: str, country_code: CountryCode = CountryCode.RU) -> list[CityFromSearch]
+```
+
+**Parameters:**
+- `query` (str): Search query
+- `country_code` (CountryCode): Default: `RU`; Country, from which to search cities
 
 **Returns:**
 - `list[City]`: List of cities

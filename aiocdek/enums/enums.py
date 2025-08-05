@@ -392,6 +392,12 @@ class CountryCode(StrEnum):
 	ZA = "ZA"
 	ZM = "ZM"
 	ZW = "ZW"
+	OS = "OS"
+	AB = "AB"
+	XK = "XK"
+	AN = "AN"
+	RC = "RC"
+	nil = ""
 
 
 class Currency(StrEnum):

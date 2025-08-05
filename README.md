@@ -54,7 +54,8 @@ async def main():
     client = CDEKAPIClient(
         client_id="your_client_id",
         client_secret="your_client_secret",
-        test_environment=False # If True, API URI = https://api.edu.cdek.ru/
+        test_environment=False, # If True, API URI = https://api.edu.cdek.ru/
+        debug=False # If True, will log success/fail for each API request
     )
     
     # Calculate delivery cost

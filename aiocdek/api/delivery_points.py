@@ -16,7 +16,7 @@ class DeliveryPointsMixin:
 			params = (
 				filter_params.model_dump(exclude_none=True) if filter_params else {}
 			)
-			response = await cls.get("/v2/deliverypoints", params=params)
+			response = await cls._get("/v2/deliverypoints", params=params)
 			if isinstance(response, list):
 				return [DeliveryPoint(**point) for point in response]
 			return [DeliveryPoint(**response)]
@@ -32,7 +32,7 @@ class DeliveryPointsMixin:
 			params = (
 				filter_params.model_dump(exclude_none=True) if filter_params else {}
 			)
-			response = await cls.get("/v2/deliverypoints", params=params)
+			response = await cls._get("/v2/deliverypoints", params=params)
 			return DeliveryPointSearchResult(**response)
 		except ValidationError as e:
 			logger.error(f"Validation error in search_delivery_points: {e}")

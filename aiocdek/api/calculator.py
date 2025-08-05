@@ -13,7 +13,7 @@ class CalculatorMixin:
 	@classmethod
 	async def calculate_tariff(cls, request: TariffRequest) -> TariffResponse:
 		try:
-			response = await cls.post(
+			response = await cls._post(
 				"/v2/calculator/tariff", json=request.model_dump(exclude_none=True)
 			)
 			return TariffResponse(**response)
@@ -26,7 +26,7 @@ class CalculatorMixin:
 		cls, request: TariffListRequest
 	) -> list[TariffResponse]:
 		try:
-			response = await cls.post(
+			response = await cls._post(
 				"/v2/calculator/tarifflist", json=request.model_dump(exclude_none=True)
 			)
 			tariff_codes = response.get("tariff_codes", [])
@@ -40,7 +40,7 @@ class CalculatorMixin:
 		cls, request: CustomsDutyRequest
 	) -> CustomsDutyResponse:
 		try:
-			response = await cls.post(
+			response = await cls._post(
 				"/v2/calculator/customs-duty",
 				json=request.model_dump(exclude_none=True),
 			)
