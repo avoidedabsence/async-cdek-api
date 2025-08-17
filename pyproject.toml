@@ -58,10 +58,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/avoidedabsence/aiocdek"
-Repository = "https://github.com/avoidedabsence/aiocdek.git"
-Documentation = "https://github.com/avoidedabsence/aiocdek/blob/main/docs/API_REFERENCE.md"
-"Bug Tracker" = "https://github.com/avoidedabsence/aiocdek/issues"
+Homepage = "https://github.com/plassstic/aiocdek"
+Repository = "https://github.com/plassstic/aiocdek.git"
+Documentation = "https://github.com/plassstic/aiocdek/blob/main/docs/API_REFERENCE.md"
+"Bug Tracker" = "https://github.com/plassstic/aiocdek/issues"
 
 [tool.hatch.version]
 path = "aiocdek/__init__.py"
