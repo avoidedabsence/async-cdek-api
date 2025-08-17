@@ -59,7 +59,7 @@ async def main():
     )
     
     # Calculate delivery cost
-    from cdek.models import TariffRequest
+    from aiocdek.models import TariffRequest
     tariff_request = TariffRequest(
         type=1,  # Online store
         from_location=Location(code=270),  # Moscow

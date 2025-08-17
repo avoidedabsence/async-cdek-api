@@ -10,7 +10,6 @@ from ..models import (
 
 
 class CalculatorMixin:
-	@classmethod
 	async def calculate_tariff(cls, request: TariffRequest) -> TariffResponse:
 		try:
 			response = await cls._post(
@@ -21,7 +20,6 @@ class CalculatorMixin:
 			logger.error(f"Validation error in calculate_tariff: {e}")
 			raise
 
-	@classmethod
 	async def calculate_tariff_list(
 		cls, request: TariffListRequest
 	) -> list[TariffResponse]:
@@ -35,7 +33,6 @@ class CalculatorMixin:
 			logger.error(f"Validation error in calculate_tariff_list: {e}")
 			raise
 
-	@classmethod
 	async def calculate_customs_duty(
 		cls, request: CustomsDutyRequest
 	) -> CustomsDutyResponse:

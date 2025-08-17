@@ -41,19 +41,17 @@ class CDEKAPIClient(
 	_client_id: str = None
 	_client_secret: str = None
 
-	@classmethod
-	def __init__(cls, client_id: str, client_secret: str, test_environment: bool = False, debug: bool = False):
-		cls._client_id = client_id
-		cls._client_secret = client_secret
-		cls._base_url = "https://api.cdek.ru/" if not test_environment else "https://api.edu.cdek.ru/"
-		cls._debug_mode = debug
+	def __init__(self, client_id: str, client_secret: str, test_environment: bool = False, debug: bool = False):
+		self._client_id = client_id
+		self._client_secret = client_secret
+		self._base_url = "https://api.cdek.ru/" if not test_environment else "https://api.edu.cdek.ru/"
+		self._debug_mode = debug
 
-	@classmethod
 	@asynccontextmanager
-	async def _get_cached_auth_data(cls) -> AsyncGenerator[CDEKAuthData | None]:
-		if cls._cached_auth_data and not cls._cached_auth_data.is_expired():
+	async def _get_cached_auth_data(self) -> AsyncGenerator[CDEKAuthData | None]:
+		if self._cached_auth_data and not self._cached_auth_data.is_expired():
 			logger.debug("Retrieved cached AuthData")
-			yield cls._cached_auth_data
+			yield self._cached_auth_data
 			return
 
 		logger.debug("Requesting new AuthData")
@@ -62,18 +60,18 @@ class CDEKAPIClient(
 				"https://api.cdek.ru/v2/oauth/token",
 				data={
 					"grant_type": "client_credentials",
-					"client_id": cls._client_id,
-					"client_secret": cls._client_secret,
+					"client_id": self._client_id,
+					"client_secret": self._client_secret,
 				},
 			)
 			if auth_request.ok:
 				data = await auth_request.json()
 				access_token = data["access_token"]
 				expires_at = datetime.now() + timedelta(seconds=data["expires_in"])
-				cls._cached_auth_data = CDEKAuthData(
+				self._cached_auth_data = CDEKAuthData(
 					access_token=access_token, expires_at=expires_at
 				)
-				yield cls._cached_auth_data
+				yield self._cached_auth_data
 			else:
 				logger.error(await auth_request.text())
 				yield None
